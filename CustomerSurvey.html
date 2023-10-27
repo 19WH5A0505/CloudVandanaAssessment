@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Survey Form</title>
+    <style>
+        body 
+        {
+            font-family: Arial, sans-serif;
+        }
+
+        .container 
+        {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .form-group 
+        {
+            margin-bottom: 10px;
+        }
+
+        .label 
+        {
+            display: block;
+            font-weight: bold;
+        }
+
+        .input
+        {
+            width: 100%;
+            padding: 5px;
+        }
+
+        .checkbox-label 
+        {
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        .button 
+        {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1><center>CUSTOMER SURVEY FORM</center></h1>
+
+    <div class="container">
+        <form id="survey-form">
+            <div class="form-group">
+                <label for="first-name" class="label">First Name:</label>
+                <input type="text" id="first-name" class="input" required>
+            </div>
+            <div class="form-group">
+                <label for="last-name" class="label">Last Name:</label>
+                <input type="text" id="last-name" class="input" required>
+            </div>
+            <div class="form-group">
+                <label for="dob" class="label">Date of Birth:</label>
+                <input type="date" id="dob" class="input" required>
+            </div>
+            <div class="form-group">
+                <label for="country" class="label">Country:</label>
+                <select id="country" class="input" required>
+                    <option value="india">INDIA</option>
+                    <option value="usa">USA</option>
+                    <option value="canada">Canada</option>
+                    <option value="uk">UK</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="label">Gender:</label>
+                <input type="checkbox" id="male" class="input">
+                <label for="male" class="checkbox-label">Male</label>
+                <input type="checkbox" id="female" class="input">
+                <label for="female" class="checkbox-label">Female</label>
+            </div>
+            <div class="form-group">
+                <label for="profession" class="label">Profession:</label>
+                <input type="text" id="profession" class="input" required>
+            </div>
+            <div class="form-group">
+                <label for="email" class="label">Email:</label>
+                <input type="email" id="email" class="input" required>
+            </div>
+            <div class="form-group">
+                <label for="mobile" class="label">Mobile Number:</label>
+                <input type="tel" id="mobile" class="input" required>
+            </div>
+            <div class="form-group">
+                <button type="button" class="button" onclick="submitForm()">Submit</button>
+                <button type="button" class="button" onclick="resetForm()">Reset</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function submitForm() 
+        {
+            const firstName = document.getElementById("first-name").value;
+            const lastName = document.getElementById("last-name").value;
+            const dob = document.getElementById("dob").value;
+            const country = document.getElementById("country").value;
+            const genderMale = document.getElementById("male").checked;
+            const genderFemale = document.getElementById("female").checked;
+            const profession = document.getElementById("profession").value;
+            const email = document.getElementById("email").value;
+            const mobile = document.getElementById("mobile").value;
+
+            if (
+                firstName &&
+                lastName &&
+                dob &&
+                country &&
+                (genderMale || genderFemale) &&
+                profession &&
+                email &&
+                mobile
+            ) {
+                const message =
+                    `First Name: ${firstName}\n` +
+                    `Last Name: ${lastName}\n` +
+                    `Date of Birth: ${dob}\n` +
+                    `Country: ${country}\n` +
+                    `Gender: ${genderMale ? "Male" : "Female"}\n` +
+                    `Profession: ${profession}\n` +
+                    `Email: ${email}\n` +
+                    `Mobile Number: ${mobile}`;
+                alert(message);
+
+                document.getElementById("survey-form").reset();
+            } else {
+                alert("Please fill in all the required fields.");
+            }
+        }
+
+        function resetForm() 
+        {
+            document.getElementById("survey-form").reset();
+        }
+    </script>
+</body>
+</html>
